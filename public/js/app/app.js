@@ -6,10 +6,17 @@ var Application = Marionette.Application.extend({
 		this.mergeOptions(options, ['myOption']);
 		console.log('The option is:', this.myOption);
 	},
-  onBeforeStart: function() {
-    	new MyRouter();
+	onBeforeStart: function() {
+		//renderer funciton cannot be execute at onStart
+		Marionette.Renderer.render = function(template, data) {
+		  return template(data);
+		};
+		new MyRouter();
 		Backbone.history.start();
-  }
+	},
+	onStart: function() {
+
+	}
 });
 
 
