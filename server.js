@@ -66,7 +66,7 @@ app.use('/index', function (req, res) {
 });
 
 var getNameRoutes = require('./routes/getName');
-app.use('/', getNameRoutes);
+app.use('/api', getNameRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

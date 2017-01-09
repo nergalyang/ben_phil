@@ -18776,7 +18776,7 @@
 		        console.log("你改变了name属性为：" + name);  
 		    });  
 		},  
-		url:'/getName'
+		url:'/api/getPhil'
 	});
 
 	module.exports = HomeModel;
