@@ -65,6 +65,10 @@ app.use('/index', function (req, res) {
    res.send();
 });
 
+app.use('/getName', function (req, res) {
+   res.json({name:'Peter',age:123});
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 var server = app.listen(8081, function () {

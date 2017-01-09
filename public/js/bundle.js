@@ -18708,12 +18708,29 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var Marionette = __webpack_require__(5);
-	var template = __webpack_require__(41);
+	var template = __webpack_require__(43);
+	var Model = __webpack_require__(44);
 	var HomeView = Marionette.View.extend({
 	  el: 'body',
 	  template: template,
-
-
+	  initialize : function () {
+	  	var that = this;
+	  	this.model = new Model();
+	  	this.model.fetch({
+	  		success : function () {
+	  			that.render();
+	  		}
+	  	});
+	  },
+	  ui : {
+	  	clickMe : '#clickme'
+	  },
+	  events : {
+	  	'click @ui.clickMe' :'changeModel'
+	  },
+	  changeModel : function () {
+	  	this.model.set({'name':'Akito',age:123});
+	  }
 	});
 
 	module.exports = HomeView;
@@ -18721,24 +18738,7 @@
 
 
 /***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Handlebars = __webpack_require__(42);
-	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function";
-
-	  return " <div class=\"home\">\n  "
-	    + ((stack1 = ((helper = (helper = helpers.header || (depth0 != null ? depth0.header : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"header","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\n  <h2>This is "
-	    + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + " page.</h2>\n  "
-	    + ((stack1 = ((helper = (helper = helpers.footer || (depth0 != null ? depth0.footer : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"footer","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\n </div>\n";
-	},"useData":true});
-
-/***/ },
+/* 41 */,
 /* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18746,6 +18746,40 @@
 	// the runtime on a supported path.
 	module.exports = __webpack_require__(9)['default'];
 
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(42);
+	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+	  return " <div class=\"home\">\n  \n  <h2>My name is "
+	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+	    + ", I am "
+	    + alias4(((helper = (helper = helpers.age || (depth0 != null ? depth0.age : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"age","hash":{},"data":data}) : helper)))
+	    + " years old.</h2>\n  <button id='clickme'>Clickme</button>\n </div>\n";
+	},"useData":true});
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Backbone = __webpack_require__(4);
+	var HomeModel = Backbone.Model.extend({
+		initialize: function(){ 
+		    //初始化时绑定监听  
+		    this.bind("change:name",function(){  
+		        var name = this.get("name");  
+		        console.log("你改变了name属性为：" + name);  
+		    });  
+		},  
+		url:'/getName'
+	});
+
+	module.exports = HomeModel;
 
 /***/ }
 /******/ ]);
