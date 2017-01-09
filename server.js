@@ -65,9 +65,8 @@ app.use('/index', function (req, res) {
    res.send();
 });
 
-app.use('/getName', function (req, res) {
-   res.json({name:'Peter',age:123});
-});
+var getNameRoutes = require('./routes/getName');
+app.use('/', getNameRoutes);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -84,6 +83,6 @@ var server = app.listen(8081, function () {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-
-    res.redirect('/login');
+    res.status(500).send({ error: '请登录' });
+    res.redirect('/');
 }
