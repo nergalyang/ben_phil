@@ -44,29 +44,30 @@ passport.deserializeUser(function (user, done) {//删除user对象
     done(null, user);//可以通过数据库方式操作
 });
 
+var exphbs  = require('express-handlebars');
+ 
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+ 
+app.get('/login', function (req, res) {
+    res.render('login/login');
+});
+
 app.post('/login',
     passport.authenticate('local', {
         successRedirect: '/users',
-        failureRedirect: '/'
+        failureRedirect: '/bad'
     }));
 
-app.all('/users', isLoggedIn);
-
-app.get('/test', function (req, res) {
-	res.json({name:'admin',age:18});
-});
 app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/login');
 });
 
 
-app.use('/index', function (req, res) {
-   res.send();
-});
-
-var getNameRoutes = require('./routes/getName');
-app.use('/api', getNameRoutes);
+//app.all('/getName', isLoggedIn);
+var getNameRouter = require('./routes/getName');
+app.use('/api', getNameRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -83,6 +84,6 @@ var server = app.listen(8081, function () {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.status(500).send({ error: '请登录' });
+    res.status(500).send({ error: '请' });
     res.redirect('/');
 }
