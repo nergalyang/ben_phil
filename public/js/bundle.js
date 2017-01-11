@@ -11838,7 +11838,7 @@
 
 	var Backbone = __webpack_require__(4);
 	var Marionette = __webpack_require__(5);
-	var MyRouter = __webpack_require__(38);
+	var MyRouter = __webpack_require__(7);
 	var Application = Marionette.Application.extend({
 		initialize: function(options) {
 			this.mergeOptions(options, ['myOption']);
@@ -17479,9 +17479,96 @@
 	//# sourceMappingURL=./backbone.radio.js.map
 
 /***/ },
-/* 7 */,
-/* 8 */,
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Marionette = __webpack_require__(5);
+	var myController = __webpack_require__(8);
+
+	var MyRouter = Marionette.AppRouter.extend({
+		controller: myController,
+		appRoutes: {
+			"": "home"
+		}
+	});
+
+	module.exports = MyRouter;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var HomeView = __webpack_require__(9);
+
+	var MyController = {
+	  home: function() {
+	  	this.layout = new HomeView();
+	  	this.layout.render();
+	  }
+	};
+	module.exports = MyController;
+
+/***/ },
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Marionette = __webpack_require__(5);
+	var template = __webpack_require__(10);
+	var Model = __webpack_require__(30);
+	var HomeView = Marionette.View.extend({
+	  el: 'body',
+	  template: template,
+	  initialize : function () {
+	  	var that = this;
+	  	this.model = new Model();
+	  	this.model.fetch({
+	  		success : function () {
+	  			that.render();
+	  		}
+	  	});
+	  },
+	  ui : {
+	  	clickMe : '#clickme'
+	  },
+	  events : {
+	  	'click @ui.clickMe' :'changeModel'
+	  },
+	  changeModel : function () {
+	  	this.model.set({'name':'Akito',age:123});
+	  }
+	});
+
+	module.exports = HomeView;
+
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Handlebars = __webpack_require__(11);
+	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+	  return " <div class=\"home\">\n  \n  <h2>My name is "
+	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+	    + ", I am "
+	    + alias4(((helper = (helper = helpers.age || (depth0 != null ? depth0.age : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"age","hash":{},"data":data}) : helper)))
+	    + " years old.</h2>\n  <button id='clickme'>Clickme</button>\n </div>\n";
+	},"useData":true});
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Create a simple path alias to allow browserify to resolve
+	// the runtime on a supported path.
+	module.exports = __webpack_require__(12)['default'];
+
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17495,30 +17582,30 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-	var _handlebarsBase = __webpack_require__(10);
+	var _handlebarsBase = __webpack_require__(13);
 
 	var base = _interopRequireWildcard(_handlebarsBase);
 
 	// Each of these augment the Handlebars object. No need to setup here.
 	// (This is done to easily share code between commonjs and browse envs)
 
-	var _handlebarsSafeString = __webpack_require__(24);
+	var _handlebarsSafeString = __webpack_require__(27);
 
 	var _handlebarsSafeString2 = _interopRequireDefault(_handlebarsSafeString);
 
-	var _handlebarsException = __webpack_require__(12);
+	var _handlebarsException = __webpack_require__(15);
 
 	var _handlebarsException2 = _interopRequireDefault(_handlebarsException);
 
-	var _handlebarsUtils = __webpack_require__(11);
+	var _handlebarsUtils = __webpack_require__(14);
 
 	var Utils = _interopRequireWildcard(_handlebarsUtils);
 
-	var _handlebarsRuntime = __webpack_require__(25);
+	var _handlebarsRuntime = __webpack_require__(28);
 
 	var runtime = _interopRequireWildcard(_handlebarsRuntime);
 
-	var _handlebarsNoConflict = __webpack_require__(26);
+	var _handlebarsNoConflict = __webpack_require__(29);
 
 	var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
@@ -17553,7 +17640,7 @@
 
 
 /***/ },
-/* 10 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17564,17 +17651,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
-	var _exception = __webpack_require__(12);
+	var _exception = __webpack_require__(15);
 
 	var _exception2 = _interopRequireDefault(_exception);
 
-	var _helpers = __webpack_require__(13);
+	var _helpers = __webpack_require__(16);
 
-	var _decorators = __webpack_require__(21);
+	var _decorators = __webpack_require__(24);
 
-	var _logger = __webpack_require__(23);
+	var _logger = __webpack_require__(26);
 
 	var _logger2 = _interopRequireDefault(_logger);
 
@@ -17663,7 +17750,7 @@
 
 
 /***/ },
-/* 11 */
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17793,7 +17880,7 @@
 
 
 /***/ },
-/* 12 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -17850,7 +17937,7 @@
 
 
 /***/ },
-/* 13 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17861,31 +17948,31 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _helpersBlockHelperMissing = __webpack_require__(14);
+	var _helpersBlockHelperMissing = __webpack_require__(17);
 
 	var _helpersBlockHelperMissing2 = _interopRequireDefault(_helpersBlockHelperMissing);
 
-	var _helpersEach = __webpack_require__(15);
+	var _helpersEach = __webpack_require__(18);
 
 	var _helpersEach2 = _interopRequireDefault(_helpersEach);
 
-	var _helpersHelperMissing = __webpack_require__(16);
+	var _helpersHelperMissing = __webpack_require__(19);
 
 	var _helpersHelperMissing2 = _interopRequireDefault(_helpersHelperMissing);
 
-	var _helpersIf = __webpack_require__(17);
+	var _helpersIf = __webpack_require__(20);
 
 	var _helpersIf2 = _interopRequireDefault(_helpersIf);
 
-	var _helpersLog = __webpack_require__(18);
+	var _helpersLog = __webpack_require__(21);
 
 	var _helpersLog2 = _interopRequireDefault(_helpersLog);
 
-	var _helpersLookup = __webpack_require__(19);
+	var _helpersLookup = __webpack_require__(22);
 
 	var _helpersLookup2 = _interopRequireDefault(_helpersLookup);
 
-	var _helpersWith = __webpack_require__(20);
+	var _helpersWith = __webpack_require__(23);
 
 	var _helpersWith2 = _interopRequireDefault(_helpersWith);
 
@@ -17902,14 +17989,14 @@
 
 
 /***/ },
-/* 14 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	exports['default'] = function (instance) {
 	  instance.registerHelper('blockHelperMissing', function (context, options) {
@@ -17947,7 +18034,7 @@
 
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17957,9 +18044,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
-	var _exception = __webpack_require__(12);
+	var _exception = __webpack_require__(15);
 
 	var _exception2 = _interopRequireDefault(_exception);
 
@@ -18047,7 +18134,7 @@
 
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18057,7 +18144,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _exception = __webpack_require__(12);
+	var _exception = __webpack_require__(15);
 
 	var _exception2 = _interopRequireDefault(_exception);
 
@@ -18078,14 +18165,14 @@
 
 
 /***/ },
-/* 17 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	exports['default'] = function (instance) {
 	  instance.registerHelper('if', function (conditional, options) {
@@ -18113,7 +18200,7 @@
 
 
 /***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18145,7 +18232,7 @@
 
 
 /***/ },
-/* 19 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18163,14 +18250,14 @@
 
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	exports['default'] = function (instance) {
 	  instance.registerHelper('with', function (context, options) {
@@ -18202,7 +18289,7 @@
 
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18213,7 +18300,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _decoratorsInline = __webpack_require__(22);
+	var _decoratorsInline = __webpack_require__(25);
 
 	var _decoratorsInline2 = _interopRequireDefault(_decoratorsInline);
 
@@ -18224,14 +18311,14 @@
 
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	exports['default'] = function (instance) {
 	  instance.registerDecorator('inline', function (fn, props, container, options) {
@@ -18259,14 +18346,14 @@
 
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	var logger = {
 	  methodMap: ['debug', 'info', 'warn', 'error'],
@@ -18312,7 +18399,7 @@
 
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	// Build out our basic SafeString type
@@ -18333,7 +18420,7 @@
 
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18353,15 +18440,15 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-	var _utils = __webpack_require__(11);
+	var _utils = __webpack_require__(14);
 
 	var Utils = _interopRequireWildcard(_utils);
 
-	var _exception = __webpack_require__(12);
+	var _exception = __webpack_require__(15);
 
 	var _exception2 = _interopRequireDefault(_exception);
 
-	var _base = __webpack_require__(10);
+	var _base = __webpack_require__(13);
 
 	function checkRevision(compilerInfo) {
 	  var compilerRevision = compilerInfo && compilerInfo[0] || 1,
@@ -18636,7 +18723,7 @@
 
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/* global window */
@@ -18663,108 +18750,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */,
-/* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Marionette = __webpack_require__(5);
-	var myController = __webpack_require__(39);
-
-	var MyRouter = Marionette.AppRouter.extend({
-		controller: myController,
-		appRoutes: {
-			"": "home"
-		}
-	});
-
-	module.exports = MyRouter;
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var HomeView = __webpack_require__(40);
-
-	var MyController = {
-	  home: function() {
-	  	this.layout = new HomeView();
-	  	this.layout.render();
-	  }
-	};
-	module.exports = MyController;
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Marionette = __webpack_require__(5);
-	var template = __webpack_require__(43);
-	var Model = __webpack_require__(44);
-	var HomeView = Marionette.View.extend({
-	  el: 'body',
-	  template: template,
-	  initialize : function () {
-	  	var that = this;
-	  	this.model = new Model();
-	  	this.model.fetch({
-	  		success : function () {
-	  			that.render();
-	  		}
-	  	});
-	  },
-	  ui : {
-	  	clickMe : '#clickme'
-	  },
-	  events : {
-	  	'click @ui.clickMe' :'changeModel'
-	  },
-	  changeModel : function () {
-	  	this.model.set({'name':'Akito',age:123});
-	  }
-	});
-
-	module.exports = HomeView;
-
-
-
-/***/ },
-/* 41 */,
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Create a simple path alias to allow browserify to resolve
-	// the runtime on a supported path.
-	module.exports = __webpack_require__(9)['default'];
-
-
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Handlebars = __webpack_require__(42);
-	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
-	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-	  return " <div class=\"home\">\n  \n  <h2>My name is "
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + ", I am "
-	    + alias4(((helper = (helper = helpers.age || (depth0 != null ? depth0.age : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"age","hash":{},"data":data}) : helper)))
-	    + " years old.</h2>\n  <button id='clickme'>Clickme</button>\n </div>\n";
-	},"useData":true});
-
-/***/ },
-/* 44 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Backbone = __webpack_require__(4);
