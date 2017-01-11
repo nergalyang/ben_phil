@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
 var passport = require('passport'),
 	LocalStrategy = require('passport-local').Strategy;
 
@@ -38,3 +39,15 @@ router.post('/',
         failureRedirect: '/'
     }));
 module.exports = router;
+=======
+
+router.get('/', function(req, res){
+    res.render('login/login', {name: 'Hen'});
+});
+// router.post('/',
+//     passport.authenticate('local', {
+//         successRedirect: '/aaa',
+//         failureRedirect: '/'
+//     }));
+module.exports = router;
+>>>>>>> 1ab63924889103e5f397383bb18c1a80abbd0d59

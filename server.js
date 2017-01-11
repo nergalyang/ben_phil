@@ -24,6 +24,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.use('/login',loginRoute);
 
+<<<<<<< HEAD
 app.get('/logout', logoutRoute);
 
 app.all('/users', isLoggedIn);
@@ -33,6 +34,40 @@ app.use('/', homeRoute);
 
 var getNameRoutes = require('./routes/getName');
 app.use('/api', getNameRoutes);
+=======
+passport.serializeUser(function (user, done) {//保存user对象
+    done(null, user);//可以通过数据库方式操作
+});
+
+passport.deserializeUser(function (user, done) {//删除user对象
+    done(null, user);//可以通过数据库方式操作
+});
+
+var exphbs  = require('express-handlebars');
+ 
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+ 
+app.get('/login', function (req, res) {
+    res.render('login/login');
+});
+
+app.post('/login',
+    passport.authenticate('local', {
+        successRedirect: '/users',
+        failureRedirect: '/bad'
+    }));
+
+app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/login');
+});
+
+
+//app.all('/getName', isLoggedIn);
+var getNameRouter = require('./routes/getName');
+app.use('/api', getNameRouter);
+>>>>>>> 1ab63924889103e5f397383bb18c1a80abbd0d59
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -49,6 +84,6 @@ var server = app.listen(8081, function () {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.status(500).send({ error: '请登录' });
+    res.status(500).send({ error: '请' });
     res.redirect('/');
 }
