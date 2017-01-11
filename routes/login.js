@@ -1,25 +1,31 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
 var passport = require('passport'),
 	LocalStrategy = require('passport-local').Strategy;
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '20160830',
+  database : 'ben_phil'
+});
+connection.connect();
 passport.use('local', new LocalStrategy(
     function (username, password, done) {
-        var user = {
-            id: '1',
-            username: 'admin',
-            password: '123'
-        }; // 可以配置通过数据库方式读取登陆账号
+        connection.query('SELECT * FROM USERS where name ="Ben"', function(err, rows, fields) {
+                if (err) throw err;
+                //find out RowDataPeacket Object
+                var data = rows[0];
+                if (username !== data.name) {
+                    return done(null, false, { message: 'Incorrect username.' });
+                }
+                if (password !== data.password) {
+                    return done(null, false, { message: 'Incorrect password.' });
+                }
+                return done(null, rows);
 
-        if (username !== user.username) {
-            return done(null, false, { message: 'Incorrect username.' });
-        }
-        if (password !== user.password) {
-            return done(null, false, { message: 'Incorrect password.' });
-        }
-
-        return done(null, user);
+        });
     }
 ));
 
@@ -35,19 +41,7 @@ router.get('/', function (req, res) {
 });
 router.post('/',
     passport.authenticate('local', {
-        successRedirect: '/users',
+        successRedirect: '/good',
         failureRedirect: '/'
     }));
 module.exports = router;
-=======
-
-router.get('/', function(req, res){
-    res.render('login/login', {name: 'Hen'});
-});
-// router.post('/',
-//     passport.authenticate('local', {
-//         successRedirect: '/aaa',
-//         failureRedirect: '/'
-//     }));
-module.exports = router;
->>>>>>> 1ab63924889103e5f397383bb18c1a80abbd0d59
