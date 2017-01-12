@@ -5,9 +5,15 @@ body {
     -webkit-background-size:100%;
     -o-background-size:100%;
     background-size:100%;
+
 }
-
-
+canvas {
+  display: block;
+}       
+canvas img {
+	width: 2px;
+	height: 29px;
+}
 *{
     margin:0;
     padding:0;
@@ -47,4 +53,5 @@ body {
 	
 }
 /*导航结束*/
+
 
