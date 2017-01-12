@@ -47,10 +47,10 @@
 	$ = __webpack_require__(1);
 	_ = __webpack_require__(2);
 	var Application = __webpack_require__(3);
-
-
 	var app = new Application();
 	app.start();
+
+	//controller for the home.html goes below.
 
 /***/ },
 /* 1 */
@@ -11849,11 +11849,8 @@
 			Marionette.Renderer.render = function(template, data) {
 			  return template(data);
 			};
-			new MyRouter();
+			new MyRouter({showView:this.showView});
 			Backbone.history.start();
-		},
-		onStart: function() {
-
 		}
 	});
 
@@ -17516,7 +17513,7 @@
 	var template = __webpack_require__(10);
 	var Model = __webpack_require__(30);
 	var HomeView = Marionette.View.extend({
-	  el: 'body',
+	  el: '#app',
 	  template: template,
 	  initialize : function () {
 	  	var that = this;
@@ -17549,13 +17546,7 @@
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
-
-	  return " <div class=\"home\">\n  \n  <h2>My name is "
-	    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-	    + ", I am "
-	    + alias4(((helper = (helper = helpers.age || (depth0 != null ? depth0.age : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"age","hash":{},"data":data}) : helper)))
-	    + " years old.</h2>\n  <button id='clickme'>Clickme</button>\n </div>\n";
+	    return "<div class=\"navContainer\">\n	<header>\n		<ul>\n			<li>笨飞的网站\n			<li>Ben&Phil's Website\n		</ul>\n	</header>\n	<div class=\"container\">\n		<div class=\"row\">\n			<ul>\n				<li><a href=\"#\">大数据</a></li>\n				<li><a href=\"#\">机器学习</a></li>\n				<li><a href=\"#\">Javascript</a></li>\n				<li><a href=\"#\">关于我们</a></li>\n			</ul>\n		</div>\n	</div>\n	<footer>\n		<a>Ben_Phil</a>\n	</footer>\n</div>";
 	},"useData":true});
 
 /***/ },

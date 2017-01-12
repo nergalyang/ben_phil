@@ -1,3 +1,50 @@
-.body {
+body {
+	background-image:url(/images/gundam.jpg);
+	background-repeat:no-repeat;
+    -moz-background-size:100%;
+    -webkit-background-size:100%;
+    -o-background-size:100%;
+    background-size:100%;
+}
+
+
+*{
+    margin:0;
+    padding:0;
+}
+/*导航*/
+.navContainer {
+	position: absolute;
+	padding-top: 1.5%;
+	top : 30%;
+	left:35%;
+	width: 30%;
+	height: 200px;
+	background-color:#deeb21;
+	background: -webkit-radial-gradient(circle, #fff200, #e6db12, #d1c822, #bab32c, #a8a237); /* Safari 5.1 - 6.0 */
+	background: -o-radial-gradient(circle, #fff200, #e6db12, #d1c822, #bab32c, #a8a237); /* Opera 11.6 - 12.0 */
+	background: -moz-radial-gradient(circle, #fff200, #e6db12, #d1c822, #bab32c, #a8a237); /* Firefox 3.6 - 15 */
+	background: radial-gradient(circle, #fff200, #e6db12, #d1c822, #bab32c, #a8a237); /* 标准的语法 */
+	opacity: 0.4;
+	border-radius: 30px;
+}
+
+.navContainer header {
+	
+	text-align: center;
+	list-style-type:none;
+}
+.navContainer header ul li {
+	list-style-type:none;
+}
+.navContainer ul {
+	margin-left:20px;
+	list-style-type:none;
+}
+.navContainer footer {
+	margin-left:20px;
+	text-align: center;
 	
 }
+/*导航结束*/
+

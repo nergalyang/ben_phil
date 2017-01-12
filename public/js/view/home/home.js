@@ -2,7 +2,7 @@ var Marionette = require('backbone.marionette');
 var template = require('../../template/home/home.hbs');
 var Model = require('../../model/home/homeModel');
 var HomeView = Marionette.View.extend({
-  el: 'body',
+  el: '#app',
   template: template,
   initialize : function () {
   	var that = this;
