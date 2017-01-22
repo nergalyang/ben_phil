@@ -1,14 +1,14 @@
 var Marionette = require('backbone.marionette');
 var template = require('../../template/home/home.hbs');
 var Model = require('../../model/home/homeModel');
+//import Model from '../../model/home/homeModel';
 var HomeView = Marionette.View.extend({
   el: '#app',
   template: template,
   initialize : function () {
-  	
+    $('div').html('123');
   },
   onRender : function () {
-   
     window.onload = function(){
     //canvas init
     var canvas = document.getElementById("canvas");
@@ -45,9 +45,9 @@ var HomeView = Marionette.View.extend({
         var p = particles[i];
         // ctx.moveTo(p.x, p.y);
         // ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
-      var img = new Image();
-      img.src = '/images/xuehua.jpg';
-      ctx.drawImage(img,p.x,p.y,p.r,p.r);
+        var img = new Image();
+        img.src = '/images/xuehua.jpg';
+        ctx.drawImage(img,p.x,p.y,p.r,p.r);
       }
       //ctx.fill();
       update();
