@@ -41,7 +41,7 @@ router.get('/', function (req, res) {
 });
 router.post('/',
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/kkc',
         failureRedirect: '/'
     }));
 module.exports = router;

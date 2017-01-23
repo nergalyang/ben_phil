@@ -3,10 +3,10 @@ var fs = require("fs");
 var webpack = require("webpack");
 module.exports = {
   entry:{
-      bundle : __dirname + '/public/js/main.js' 
+      bundle : __dirname + '/app/js/main.js' 
   },
   output:{
-      path: __dirname + '/public/js/',
+      path: __dirname + '/public/',
       filename: 'bundle.js'
   },
 	module: {

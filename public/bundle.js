@@ -17520,7 +17520,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+	'use strict';
 
 	var Marionette = __webpack_require__(4);
 	var template = __webpack_require__(10);
@@ -17529,9 +17529,7 @@
 	var HomeView = Marionette.View.extend({
 	  el: '#app',
 	  template: template,
-	  initialize: function initialize() {
-	    $('div').html('123');
-	  },
+	  initialize: function initialize() {},
 	  onRender: function onRender() {
 	    window.onload = function () {
 	      //canvas init
@@ -17551,7 +17549,7 @@
 	        particles.push({
 	          x: Math.random() * W, //x-coordinate
 	          y: Math.random() * H, //y-coordinate
-	          r: Math.random() * 4 + 1, //radius
+	          r: Math.random() * 4 + 10, //radius
 	          d: Math.random() * mp //density
 	        });
 	      }
@@ -17567,7 +17565,7 @@
 	          // ctx.moveTo(p.x, p.y);
 	          // ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
 	          var img = new Image();
-	          img.src = '/images/xuehua.jpg';
+	          img.src = '/images/xuehua.png';
 	          ctx.drawImage(img, p.x, p.y, p.r, p.r);
 	        }
 	        //ctx.fill();
@@ -17585,7 +17583,7 @@
 	          //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
 	          //Every particle has its own density which can be used to make the downward movement different for each flake
 	          //Lets make it more random by adding in the radius
-	          p.y += Math.cos(angle + p.d) + 1 + p.r / 2;
+	          p.y += (Math.cos(angle + p.d) + 1 + p.r / 2) / 10;
 	          p.x += Math.sin(angle) * 2;
 
 	          //Sending flakes back from the top when it exits
@@ -17609,13 +17607,12 @@
 	      }
 
 	      //animation loop
-	      setInterval(draw, 33);
+	      setInterval(draw, 13);
 	    };
 	  }
 	});
 
 	module.exports = HomeView;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 10 */

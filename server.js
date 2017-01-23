@@ -39,16 +39,6 @@ var getNameRoutes = require('./routes/api/getName');
 
 //数据接口
 app.use('/api', getNameRoutes);
-const exec = require('child_process').exec;
-//传入图片地址作为参数， 那返回给我的就是新的图片地址和参数咯？
-exec('node calculateSum.js', (err, stdout, stderr) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log('=====',stdout);
-  return stdout;
-});
 
 
 app.use(express.static(path.join(__dirname, 'public')));

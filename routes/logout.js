@@ -1,4 +1,4 @@
-var a = function (req, res) {
-	res.logout();
+module.exports = function (req, res) {
+	req.logout();
+  	res.redirect('/');
 };
-module.exports = a;
