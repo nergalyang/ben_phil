@@ -94,7 +94,6 @@ var HomeView = Marionette.View.extend({
         }
       }
     }
-    
     //animation loop
     setInterval(draw, 13);
   };

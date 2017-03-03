@@ -42,6 +42,7 @@ app.use('/api', getNameRoutes);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules/ckeditor')));
 
 var server = app.listen(8081, function () {
 
