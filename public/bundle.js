@@ -18844,7 +18844,7 @@
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	__webpack_require__(32);
 
@@ -18856,15 +18856,29 @@
 	var BlogView = Marionette.View.extend({
 	  el: '#app',
 	  template: template,
+	  ui: {
+	    submitArticle: '#submitArticle'
+	  },
+	  events: {
+	    'click @ui.submitArticle': 'submitArticle'
+	  },
 	  initialize: function initialize() {
-	    console.log(CKEDITOR);
+	    console.log('123');
 	  },
 	  onRender: function onRender() {
 	    CKEDITOR.replace('editRegion');
+	  },
+	  submitArticle: function submitArticle() {
+	    var title = $('#title').val();
+	    $.post({
+	      data: { title: title },
+	      url: 'api/saveArticle'
+	    });
 	  }
 	});
 
 	module.exports = BlogView;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 32 */
@@ -19901,7 +19915,7 @@
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<h1>This is my blog!!</h1>\n<textarea name=\"editRegion\" id=\"editRegion\" style=\"width:1000px\">\n    This is my textarea to be replaced with CKEditor.\n</textarea>";
+	    return "<h1>This is my blog!!</h1>\n<input type=\"text\" id=\"title\">\n<textarea name=\"editRegion\" id=\"editRegion\" style=\"width:1000px\">\n    This is my textarea to be replaced with CKEditor.\n</textarea>\n<button id=\"submitArticle\">点击上传</button>";
 	},"useData":true});
 
 /***/ }

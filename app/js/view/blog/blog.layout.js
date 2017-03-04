@@ -6,12 +6,24 @@ import 'ckeditor'; //import是编译时
 var BlogView = Marionette.View.extend({
   el: '#app',
   template: template,
+  ui : {
+  	submitArticle : '#submitArticle'
+  },
+  events: {
+    'click @ui.submitArticle': 'submitArticle'
+  },
   initialize : function () {
-    console.log(CKEDITOR);
-
+    console.log('123');
   },
   onRender : function () {
   	  CKEDITOR.replace( 'editRegion' );
+  },
+  submitArticle : function () {
+  	var title = $('#title').val();
+  	$.post({
+  		data : {title:title},
+  		url:'api/saveArticle'
+  	});
   }
 });
 

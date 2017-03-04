@@ -1,4 +1,3 @@
-console.log();
 var pool = require('../../../database/mysql.pool.js');
 module.exports = function (req, res, next) {
 	var query = 'SELECT * FROM BLOGS where username ="Ben"';
