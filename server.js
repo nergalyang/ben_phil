@@ -35,10 +35,10 @@ app.get('/test', isLoggedIn,function(req,res,next) {
   res.json(a);
 });
 
-var getNameRoutes = require('./routes/api/getName');
+var apiRoutes = require('./routes/api/api.distributor');
 
 //数据接口
-app.use('/api', getNameRoutes);
+app.use('/api', apiRoutes);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
