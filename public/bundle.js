@@ -18862,17 +18862,21 @@
 	  events: {
 	    'click @ui.submitArticle': 'submitArticle'
 	  },
-	  initialize: function initialize() {
-	    console.log('123');
-	  },
+	  initialize: function initialize() {},
 	  onRender: function onRender() {
 	    CKEDITOR.replace('editRegion');
 	  },
 	  submitArticle: function submitArticle() {
 	    var title = $('#title').val();
 	    $.post({
-	      data: { title: title },
-	      url: 'api/saveArticle'
+	      data: {
+	        title: title,
+	        content: CKEDITOR.instances.editRegion.getData()
+	      },
+	      url: 'api/saveArticle',
+	      success: function success() {
+	        console.log('123');
+	      }
 	    });
 	  }
 	});

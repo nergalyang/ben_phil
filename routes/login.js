@@ -6,7 +6,6 @@ var passport = require('passport'),
 var pool = require('../database/mysql.pool.js');
 passport.use('local', new LocalStrategy(
     function (username, password, done) {
-        console.log(username);
         pool('SELECT * FROM USERS where name ="'+username+'"', function(err, rows, fields) {
                 if (err) throw err;
                 //find out RowDataPeacket Object
@@ -36,7 +35,7 @@ router.get('/', function (req, res) {
 //当post请求发起时候，就使用passport中间件的local策略，而local策略已经在上面定义了
 router.post('/',
     passport.authenticate('local', {
-        successRedirect: '/kkc',
+        successRedirect: '/',
         failureRedirect: '/'
     }));
 module.exports = router;

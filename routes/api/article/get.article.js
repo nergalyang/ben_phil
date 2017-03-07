@@ -1,6 +1,8 @@
 var pool = require('../../../database/mysql.pool.js');
 module.exports = function (req, res, next) {
-	var query = 'SELECT * FROM BLOGS where username ="Ben"';
+	var params = [];
+	params.push(req.user[0].name);
+	var sql = 'select * from BLOGS where username=?';
 	var cb = function(err, rows, fields) {
 	        if (err) throw err;
 	        //find out RowDataPeacket Object
@@ -11,8 +13,8 @@ module.exports = function (req, res, next) {
 	        // if (password !== data.password) {
 	        //     return done(null, false, { message: 'Incorrect password.' });
 	        // }
-	        res.send(rows);
+	        res.send(data);
 
 	};
-	pool(query, cb);
+	pool({sql:sql,values: params,}, cb);
 };

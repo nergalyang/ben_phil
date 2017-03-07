@@ -12,7 +12,7 @@ var app = express();
 
 app.use(cookieParser());
 app.use(bodyParser());
-app.use(session({secret: 'blog.fens.me', cookie: { maxAge: 600000 },  resave: false, saveUninitialized: false}));
+app.use(session({secret: 'blog.phil', cookie: { maxAge: 600000 },  resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -31,12 +31,11 @@ app.use('/logout', logoutRoute);
 
 //next就是下一个中间件
 app.get('/test', isLoggedIn,function(req,res,next) {
-  var a = {a:'123'};
-  res.json(a);
+ 
+  res.json(req.user);
 });
 
 var apiRoutes = require('./routes/api/api.distributor');
-
 //数据接口
 app.use('/api', apiRoutes);
 

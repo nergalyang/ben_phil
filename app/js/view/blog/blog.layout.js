@@ -13,7 +13,7 @@ var BlogView = Marionette.View.extend({
     'click @ui.submitArticle': 'submitArticle'
   },
   initialize : function () {
-    console.log('123');
+    
   },
   onRender : function () {
   	  CKEDITOR.replace( 'editRegion' );
@@ -21,8 +21,14 @@ var BlogView = Marionette.View.extend({
   submitArticle : function () {
   	var title = $('#title').val();
   	$.post({
-  		data : {title:title},
-  		url:'api/saveArticle'
+      data : {
+        title:title,
+        content: CKEDITOR.instances.editRegion.getData()
+      },
+  		url:'api/saveArticle',
+  		success: function () {
+  			console.log('123');
+  		}
   	});
   }
 });
