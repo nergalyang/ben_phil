@@ -11,17 +11,13 @@ module.exports = {
   },
 	module: {
     loaders: [
-      // { 
-      //   test: /\.js$/,
-      //   loader: 'babel-loader',
-      //   exclude: /node_modules/
-      // },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015']
+          presets: ['es2015'],
+          compact: false//不然超过500kb会报错
         }
       },
       { 
@@ -39,5 +35,4 @@ module.exports = {
   node: {
   	fs: "empty"
   }
-    
 };

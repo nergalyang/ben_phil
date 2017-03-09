@@ -12,7 +12,11 @@ MVC.Controller = new Router();
 MVC.App.on('before:start', function() {
 	//renderer funciton cannot be execute at onStart
 	Marionette.Renderer.render = function(template, data) {
-	  return template(data);
+	  if(typeof template == 'function') {
+	  	return template(data);
+	  }else {
+	  	return template;
+	  } 
 	};
 	Backbone.history.start();
 });

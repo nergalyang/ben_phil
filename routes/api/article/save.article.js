@@ -2,9 +2,13 @@ var pool = require('../../../database/mysql.pool.js');
 module.exports = function (req, res, next) {
 	var title = req.body.title;
 	var content = req.body.content;
-	var images = req.body.images?req.images:null;
-	//res.json({title:title,content:content});
-	var query = 'INSERT INTO BLOGS (title, content, images, username ) values ("123","123","123","123")';
+	var username;
+	if(!!req.user) {
+		username = req.user[0].name;
+	}
+	console.log(req);
+	var params = [title,content,username];
+	var sql = 'INSERT INTO BLOGS (title, content, username ) values (?,?,?)';
 	var cb = function(err, rows, fields) {
 	        if (err) throw err;
 	        //find out RowDataPeacket Object
@@ -15,9 +19,12 @@ module.exports = function (req, res, next) {
 	        // if (password !== data.password) {
 	        //     return done(null, false, { message: 'Incorrect password.' });
 	        // }
-	        res.send('good');
+	        res.send({
+	        	message: '谢谢自己写完一篇文章哈！',
+				data: {} // 原有data.
+			});
 	        
 
 	};
-	pool(query, cb);
+	pool({sql:sql,values: params,}, cb);
 };

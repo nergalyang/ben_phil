@@ -5,6 +5,7 @@ function a() {
 	}
 	return sum;
 }
-var k = a();
-console.log(k);
+
+var k = new Buffer(a().toString(),'utf8');
+process.stdout.write(k);
 // return '123';

@@ -98,7 +98,6 @@ var HomeView = Marionette.View.extend({
     setInterval(draw, 13);
   };
 
-
   }
 });
 

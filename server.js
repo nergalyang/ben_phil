@@ -11,7 +11,8 @@ var homeRoute = require('./routes/home');
 var app = express();
 
 app.use(cookieParser());
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({extended: true}));//这个extended是什么意思？
+app.use(bodyParser.json());
 app.use(session({secret: 'blog.phil', cookie: { maxAge: 600000 },  resave: false, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,8 +42,8 @@ app.use('/api', apiRoutes);
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules/ckeditor')));//for the purpose of cdeditor
-
+app.use(express.static(path.join(__dirname, 'node_modules/ckeditor')));//for the purpose of cdeditor,cause we'll some of its depencies 
+app.use(express.static(path.join(__dirname, 'app/lib/')));
 var server = app.listen(8081, function () {
 
   var host = server.address().address;
