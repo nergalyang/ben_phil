@@ -26,6 +26,7 @@ var BlogView = Marionette.View.extend({
   },
   onRender : function () {
   	  //必须设置filebrowse 的路径，相应的browse server的按钮才会出现
+      console.log('here')
      CKEDITOR.replace( 'editRegion');
   },
   submitArticle : function () {
@@ -49,8 +50,7 @@ var BlogView = Marionette.View.extend({
         error: function(model, response) {
             $('.main').hide();
     }});
-  },
+  }
   
 });
-
 module.exports = BlogView;
