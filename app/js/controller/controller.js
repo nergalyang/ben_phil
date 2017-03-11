@@ -7,8 +7,8 @@ var MyController = {
   	this.layout.render();
   },
   blog: function() {
-  	this.layout.destroy()
-  	$('body').append('<div id="app"></div>')
+  	this.layout.destroy();
+  	$('<section id="app"></section>').appendTo('header');
   	this.layout = new BlogView();
   	this.layout.render();
   }

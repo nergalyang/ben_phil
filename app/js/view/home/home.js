@@ -8,6 +8,10 @@ var HomeView = Marionette.View.extend({
   initialize : function () {
     
   },
+  attachElContent: function(html) {
+    this.$el.html(html);
+    return this;
+  },
   onRender : function () {
     var that = this;
     window.onload = function(){
@@ -101,7 +105,7 @@ var HomeView = Marionette.View.extend({
   },
   onBeforeDestroy : function () {
     //清除这个view 的setinterval
-    clearInterval(this.int)
+    clearInterval(this.int);
   }
 
 });
