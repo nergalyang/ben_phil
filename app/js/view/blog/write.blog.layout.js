@@ -1,4 +1,3 @@
-var Marionette = require('backbone.marionette');
 var template = require('../../template/blog/write.blog.layout.hbs');
 var Model  = require('../../model/blog/blog.model.js');
 var MessageView  = require('../utils/message.js');

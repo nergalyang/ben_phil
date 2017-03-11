@@ -1,4 +1,3 @@
-var Marionette = require('backbone.marionette');
 var template = require('../../template/home/home.hbs');
 var Model = require('../../model/home/homeModel');
 //import Model from '../../model/home/homeModel';

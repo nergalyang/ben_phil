@@ -3,7 +3,7 @@
 <!-- 因为子元素会继承父元素的透明层opacity 所以定义一个空div作为透明层 -->
 	<div class="div2"></div>
 	<div class="div3">
-		<div class="alert {{title status}}" role="alert"><span class="glyphicon glyphicon-{{status}}-sign"></span>{{status}}</div>
+		<div class="alert {{getMessageClass status}}" role="alert"><span class="glyphicon glyphicon-{{status}}-sign"></span>{{status}}</div>
 		<div class="container">{{message}}</div>
 		<button id="closeMsg" class="btn btn-danger">确定</button>
 	</div>

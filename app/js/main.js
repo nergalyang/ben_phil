@@ -1,7 +1,4 @@
 var MVC = {};
-
-var Backbone = require('backbone');
-var Marionette = require('backbone.marionette');
 var Application = require('./app/app.js');
 var Router = require('./router/router.js');
 

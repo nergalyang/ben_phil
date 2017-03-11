@@ -1,6 +1,7 @@
 var path = require("path");
 var fs = require("fs");
 var webpack = require("webpack");
+var plugins = require('webpack-load-plugins')();
 module.exports = {
   entry:{
       bundle : __dirname + '/app/js/main.js' 
@@ -22,10 +23,8 @@ module.exports = {
       },
       { 
         test: /\.hbs$/,
-        //loader: 'handlebars-loader',//默认helper是在同级目录下的js文件
+        //loader: 'handlebars-loader',//默认helper是在同级目录下的js
         loader: "handlebars-loader?helperDirs[]="+__dirname + "/app/js/helpers"
-        //loaders: [{ test: /\.handlebars$/, loader: __dirname + "/../../?helperDirs[]=" + __dirname + "/helpers" }]
-        // loader: __dirname + "/../../?helperDirs[]=" + __dirname + "/helpers"
       }
     ]
   },

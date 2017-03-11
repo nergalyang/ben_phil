@@ -35,7 +35,8 @@
     "passport-local": "^1.0.0",
     "standard": "^9.0.0",
     "underscore": "^1.8.3",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "webpack-load-plugins": "^0.1.2"
   },
   "devDependencies": {
     "html-loader": "^0.4.4",

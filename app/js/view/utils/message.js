@@ -1,4 +1,3 @@
-var Marionette = require('backbone.marionette');
 var template = require('../../template/utils/message.hbs');
 
 var View = Marionette.View.extend({
