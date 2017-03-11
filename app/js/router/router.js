@@ -7,7 +7,7 @@ var MyRouter = Marionette.AppRouter.extend({
 	controller: myController,
 	appRoutes: {
 		"": "home",
-		"blog": "blog"
+		"writeBlog": "writeBlog"
 	}
 });
 

@@ -22,14 +22,18 @@ module.exports = {
       },
       { 
         test: /\.hbs$/,
-        loader: "handlebars-loader",
-        exclude: /node_modules/
+        //loader: 'handlebars-loader',//默认helper是在同级目录下的js文件
+        loader: "handlebars-loader?helperDirs[]="+__dirname + "/app/js/helpers"
+        //loaders: [{ test: /\.handlebars$/, loader: __dirname + "/../../?helperDirs[]=" + __dirname + "/helpers" }]
+        // loader: __dirname + "/../../?helperDirs[]=" + __dirname + "/helpers"
       }
     ]
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: "jquery"
+      $: "jquery",
+      Marionette:'backbone.marionette',
+      Backbone:'backbone'
     })
   ],
   node: {

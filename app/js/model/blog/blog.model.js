@@ -17,7 +17,7 @@ var HomeModel = Backbone.Model.extend({
 	},
     validate : function(data) {  
 	    if(data.title ==='') {  
-	        return '标题不能为空.';  
+	        return '标题不能为空AAaa.';  
 	    }  
 	    return false;  
 	}  

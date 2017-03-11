@@ -4,7 +4,7 @@ var template = require('../../template/utils/message.hbs');
 var View = Marionette.View.extend({
   template: template,
   initialize : function () {
-  console.log(this.model);
+    
   },
   ui : {
   	'closeMsg' : '#closeMsg'
