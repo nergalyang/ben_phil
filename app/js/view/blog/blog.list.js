@@ -16,11 +16,10 @@ var BlogListView = Marionette.View.extend({
     messageRegion : '#messageRegion'
   },
   initialize : function () {
-    console.log(this.model);
+    
   },
   onRender : function () {
   	  //必须设置filebrowse 的路径，相应的browse server的按钮才会出现
-     
   }
 });
 module.exports = BlogListView;

@@ -2,13 +2,14 @@ var pool = require('../../../database/mysql.pool.js');
 module.exports = function (req, res, next) {
 	var title = req.body.title;
 	var content = req.body.content;
+	var abstract = content.slice(0,300);
 	var username;
+	var date = new Date();
 	if(!!req.user) {
 		username = req.user[0].name;
 	}
-	console.log(req);
-	var params = [title,content,username];
-	var sql = 'INSERT INTO BLOGS (title, content, username ) values (?,?,?)';
+	var params = [title,content,username,abstract,date];
+	var sql = 'INSERT INTO BLOGS (title, content, username, abstract, date) values (?,?,?,?,?)';
 	var cb = function(err, rows, fields) {
 	        if (err) throw err;
 	        //find out RowDataPeacket Object

@@ -1,6 +1,21 @@
 <div class="container">
-	<ul>{{#each data}}
-
-	<li>{{idblogs}}</li>
-	{{/each}}</ul>
+	{{#each data}}
+	<article class="post">
+	    <header class="post-header">
+	        <h2 class="post-title">
+	          <a href={{idblog}}>{{title}}</a>
+	        </h2>
+	    </header>
+	    <section class="post-section">
+    		{{{abstract}}}...
+	        <a class="read-more">Read more</a>
+	    </section>
+	    <footer class="post-footer">
+	        <img class="author-thumb" src="/images/head1.jpg" alt="Phil" nopin="nopin">
+	        <a href="/author/jruv/">{{username}}</a>
+	        —
+	        <time class="post-date" datetime={{date}}>{{lundate date}}</time>
+	    </footer>
+	</article>
+	{{/each}}
 </div>

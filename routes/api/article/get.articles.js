@@ -8,8 +8,6 @@ module.exports = function (req, res, next) {
 	    if (err) throw err;
  		res.contentType('json');//返回的数据类型
     	res.send(JSON.stringify({data:rows,status:'success'}));//给客户端返回一个json格式的数据
-	    
-
 	};
 	pool({sql:sql,values: params,}, cb);
 };
