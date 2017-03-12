@@ -1,5 +1,4 @@
 var calendar = require ('../../lib/lunarDate.js');
-console.log(calendar.solar2lunar);
 module.exports = function (_this) {
 	var year = _this.slice(0,4);
 	var month = _this.slice(5,7);
