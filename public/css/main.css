@@ -110,7 +110,9 @@ footer {
     height: 80px;
 }
 
+/*博客文章*/
 .post {
+    border-bottom: thin solid #cbcbcb;
     position: relative;
     width: 80%;
     max-width: 710px;
@@ -122,6 +124,7 @@ footer {
     padding-bottom: 4rem;
     word-wrap: break-word;
     line-height: 1.75em
+
 }
 .post-meta {
 	display: block;
