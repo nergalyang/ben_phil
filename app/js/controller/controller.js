@@ -22,7 +22,13 @@ var MyController = {
     }
     this.layout = new BlogLayoutView();
     this.layout.render();
-
+  },
+  about : function () {
+        
+    require.ensure([], function(require) {
+       var about =require('../about');
+      console.log('11111112222222222223333333333')
+    });
   }  
 };
 module.exports = MyController;

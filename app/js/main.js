@@ -3,8 +3,8 @@ var Application = require('./app/app.js');
 var Router = require('./router/router.js');
 
 MVC.App = new Application();
-MVC.Router = new Router(MVC);
-MVC.Controller = new Router();
+MVC.Router = new Router();
+//MVC.Controller = new Router();
 
 MVC.App.on('before:start', function() {
 	//renderer funciton cannot be execute at onStart
@@ -15,6 +15,7 @@ MVC.App.on('before:start', function() {
 	  	return template;
 	  } 
 	};
+
 	Backbone.history.start();
 });
 
