@@ -7,16 +7,16 @@ MVC.Router = new Router();
 //MVC.Controller = new Router();
 
 
-	require.ensure([], function(require) {//实现按需加载
-		var JSRouter = Marionette.AppRouter.extend({
-		var javascript = require('./view/javascript/js.layout.js');
+require.ensure([], function(require) {//实现按需加载
+	var javascript = require('./view/javascript/js.layout.js');
+	var JSRouter = Marionette.AppRouter.extend({
 		appRoutes: {
 			"javascript": "javascript"
-			javascript
-		}
+		},
+		javascript
 		new JSRouter()
-		});
 	});
+});
 
 
 
