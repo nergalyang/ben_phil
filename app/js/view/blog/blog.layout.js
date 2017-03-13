@@ -11,7 +11,7 @@ var BlogLayoutView = Marionette.View.extend({
   el: '#app',
   template: template,
   ui : {
-  	
+    
   },
   events: {
     
@@ -23,7 +23,7 @@ var BlogLayoutView = Marionette.View.extend({
     
   },
   onRender : function () {
-  	  var model = new BlogModel();
+      var model = new BlogModel();
       model.on("change", function() {
           console.log('in changed');
         }

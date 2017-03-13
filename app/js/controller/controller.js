@@ -1,5 +1,6 @@
-var HomeView = require('../view/home/home.js');
-var BlogLayoutView= require('../view/blog/blog.layout.js');
+var HomeView        = require('../view/home/home.js');
+var BlogLayoutView  = require('../view/blog/blog.layout.js');
+var AboutView       = require('../view/about/about.layout.js');
 
 var MyController = {
   home: function() {
@@ -8,10 +9,7 @@ var MyController = {
   },
   writeBlog: function() {
   	var that = this;
-    if(this.layout) {
-      this.layout.destroy();
-      $('<section id="app"></section>').appendTo('header');
-    }
+    checkLayout(this);
     require.ensure([], function(require) {//实现按需加载
       var WriteBlogView= require('../view/blog/write.blog.layout.js');
       that.layout = new WriteBlogView();
@@ -19,15 +17,20 @@ var MyController = {
     });
   },
   blogs: function() {
-    if(this.layout) {
-      this.layout.destroy();
-      $('<section id="app"></section>').appendTo('header');
-    }
+    checkLayout(this);
     this.layout = new BlogLayoutView();
     this.layout.render();
   },
   about : function () {  
-
+    checkLayout(this);
+    this.layout = new AboutView();
+    this.layout.render();
   }  
 };
+function checkLayout(that) {
+  if(that.layout) {
+    that.layout.destroy();
+    $('header').after('<section id="app"></section>');
+  }
+}
 module.exports = MyController;

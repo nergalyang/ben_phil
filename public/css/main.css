@@ -14,7 +14,8 @@ body {
     padding-bottom: 80px; /* footer 的高度，为 footer 占位 */
 }
 #bgimg {
-	background-image:url(/images/gundam.jpg);
+	/*background-image:url(/images/gundam.jpg);*/
+	background-color: black
 
 }
 canvas {
