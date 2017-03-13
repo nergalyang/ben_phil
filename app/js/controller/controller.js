@@ -1,13 +1,12 @@
 var HomeView        = require('../view/home/home.js');
 var BlogLayoutView  = require('../view/blog/blog.layout.js');
 var AboutView       = require('../view/about/about.layout.js');
-
 var MyController = {
   home: function() {
   	new HomeView().render();
   },
   writeBlog: function() {
-    require.ensure([], function(require) {//实现按需加载
+    require.ensure([], function(require) {//实现按需加载 code split
       var WriteBlogView= require('../view/blog/write.blog.layout.js');
       new WriteBlogView().render();
     });

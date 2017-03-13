@@ -8,7 +8,7 @@ MVC.Router = new Router();
 
 
 require.ensure([], function(require) {//实现按需加载
-	var javascript = require('./view/javascript/js.layout.js');
+	var javascript = require('./view/javascript/javascript.layout.js');
 	var JSRouter = Marionette.AppRouter.extend({
 		appRoutes: {
 			"javascript": "javascript"

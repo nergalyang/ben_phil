@@ -12,5 +12,4 @@ var MyRouter = Marionette.AppRouter.extend({
 		"about":"about"
 	}
 });
-
 module.exports = MyRouter;

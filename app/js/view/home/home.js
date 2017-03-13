@@ -8,6 +8,7 @@ var HomeView = Marionette.View.extend({
     
   },
   attachElContent: function(html) {
+    //渲染本身
     this.$el.html(html);
     return this;
   },
