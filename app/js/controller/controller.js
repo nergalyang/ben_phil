@@ -4,33 +4,19 @@ var AboutView       = require('../view/about/about.layout.js');
 
 var MyController = {
   home: function() {
-  	this.layout = new HomeView();
-  	this.layout.render();
+  	new HomeView().render();
   },
   writeBlog: function() {
-  	var that = this;
-    checkLayout(this);
     require.ensure([], function(require) {//实现按需加载
       var WriteBlogView= require('../view/blog/write.blog.layout.js');
-      that.layout = new WriteBlogView();
-      that.layout.render();
+      new WriteBlogView().render();
     });
   },
   blogs: function() {
-    checkLayout(this);
-    this.layout = new BlogLayoutView();
-    this.layout.render();
+    new BlogLayoutView().render();
   },
   about : function () {  
-    checkLayout(this);
-    this.layout = new AboutView();
-    this.layout.render();
+    new AboutView().render();
   }  
 };
-function checkLayout(that) {
-  if(that.layout) {
-    that.layout.destroy();
-    $('header').after('<section id="app"></section>');
-  }
-}
 module.exports = MyController;

@@ -10,7 +10,7 @@ var HomeModel = Backbone.Model.extend({
 	},  
 	url:function () {
 		if(this.id) {
-			return 'api/article'+this.id;
+			return 'api/article/'+this.id;
 		}else {
 			return 'api/article';
 		}

@@ -14,15 +14,13 @@ body {
     padding-bottom: 80px; /* footer 的高度，为 footer 占位 */
 }
 #bgimg {
-	/*background-image:url(/images/gundam.jpg);*/
-	background-color: black
-
+	
 }
 canvas {
   display: block;
 }       
 canvas img {
-	width: 2px;
+	width: 29px;
 	height: 29px;
 }
 *{
@@ -33,7 +31,7 @@ canvas img {
 .navContainer {
 	position: absolute;
 	padding-top: 1.5%;
-	top : 30%;
+	top : 20%;
 	left:35%;
 	width: 30%;
 	height: 200px;

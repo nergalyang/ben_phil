@@ -13,9 +13,11 @@ require.ensure([], function(require) {//实现按需加载
 		appRoutes: {
 			"javascript": "javascript"
 		},
-		javascript
-		new JSRouter()
+		controller: {
+			javascript
+		}
 	});
+	new JSRouter();
 });
 
 

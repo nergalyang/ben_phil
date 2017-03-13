@@ -4,6 +4,7 @@ function a() {
 			sum+=i;
 	}
 	return sum;
+	
 }
 
 var k = new Buffer(a().toString(),'utf8');

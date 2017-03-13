@@ -5,7 +5,6 @@ var BlogModel  = require('../../model/blog/blog.model.js');
 // var MessageView  = require('../utils/message.js');
 // var MessageModel = require('../../model/utils/message.model.js');
 var blogView = new BlogListView();
-var singleBlogView = new SingleBlogView();
 
 var BlogLayoutView = Marionette.View.extend({
   el: '#app',
@@ -32,8 +31,8 @@ var BlogLayoutView = Marionette.View.extend({
       this.showChildView('blogRegion', blogView);
       //试着监听modelchange事件
   },
-  onChildviewShowSingleBlog : function() {
-    this.showChildView('blogRegion', singleBlogView);
+  onChildviewShowSingleBlog : function(id) {
+    this.showChildView('blogRegion', new SingleBlogView({id: id}));
   }
 });
 module.exports = BlogLayoutView;

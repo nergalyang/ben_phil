@@ -1,3 +1,3 @@
 module.exports = function () {
-	console.log('in javasscript')
-}
+	console.log('in javasscript');
+};

@@ -8,7 +8,6 @@ module.exports = {
   },
   output:{
       path: __dirname + '/public/',
-
       filename: '[name].js',//对应entry的key 名字，key有多少就有多少
       vendor: ['jquery','backbone.marionette','backbone'], //第三方库
       chunkFilename: "[name].chunk.js"//实现code split，在代码里面用require.ensure，当处理一个比较大而且不常用的组件就用这个吧
@@ -37,7 +36,7 @@ module.exports = {
       Marionette:'backbone.marionette',
       Backbone:'backbone'
     }),
-    //内建压缩 不知为何变大了
+    //内建压缩 不能与--devtool inline-source-map一起使用
     // new webpack.optimize.UglifyJsPlugin({
     //     compress: {
     //         warnings: false

@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "serve": "webpack --devtool inline-source-map --watch",
-    "start": "npm-run-all --parallel serve dev"
+    "serve": "webpack --watch --devtool inline-source-map ",
+    "start": "npm-run-all --parallel serve dev",
+    "go"    :""
   },
   "author": "",
   "license": "ISC",
