@@ -8,7 +8,8 @@ var MyRouter = Marionette.AppRouter.extend({
 	appRoutes: {
 		"": "home",
 		"writeBlog": "writeBlog",
-		"blogs": "blogs"
+		"blogs": "blogs",
+		"about":"about"
 	}
 });
 
