@@ -92,5 +92,5 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
     res.status(500).send({ error: '请' });
-    res.redirect('/');
+    res.end();
 }

@@ -36,6 +36,6 @@ router.get('/', function (req, res) {
 router.post('/',
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/'
+        failureRedirect: '/fail'
     }));
 module.exports = router;
