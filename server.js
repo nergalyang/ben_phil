@@ -8,15 +8,33 @@ var passport = require('passport');
 var logoutRoute = require('./routes/logout');
 var loginRoute = require('./routes/login');
 var homeRoute = require('./routes/home');
+var MySQLStore = require('express-mysql-session')(session);
+var options = {
+    host     : 'localhost',
+    user     : 'root',
+    password : '20160830',
+    port     : 3306,
+    database : 'ben_phil'
+};
+var sessionStore = new MySQLStore(options);
 var app = express();
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));//这个extended是什么意思？
 app.use(bodyParser.json());
-app.use(session({secret: 'blog.phil', cookie: { maxAge: 600000 },  resave: false, saveUninitialized: false}));
+//多线程间共享session
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'blog.phil',
+    store: sessionStore,
+    cookie: { maxAge: 600000 },
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
 
 //handlebars模版渲染引擎
 var exphbs  = require('express-handlebars');
@@ -33,7 +51,7 @@ app.use('/login',loginRoute);
 app.use('/logout', logoutRoute);
 
 //next就是下一个中间件
-app.get('/test', isLoggedIn,function(req,res,next) {
+app.get('/test', isLoggedIn, function(req,res,next) {
  
   res.json(req.user);
 });
@@ -48,33 +66,28 @@ app.use(express.static(path.join(__dirname, 'node_modules/ckeditor')));//for the
 app.use(express.static(path.join(__dirname, 'app/lib/')));
 
 //要解决使用cluster session 同步问题
-// var cluster = require('cluster');
-// var numCPUs = require('os').cpus().length;
-// if (cluster.isMaster) {
-//   require('os').cpus().forEach(function(){
-//     cluster.fork();
-//   });
-//   cluster.on('exit', function(worker, code, signal) {
-//     console.log('worker ' + worker.process.pid + ' died');
-//   });
-//   cluster.on('listening', function(worker, address) {  
-//     console.log("A worker with #"+worker.id+" is now connected to " +
-//      address.address +
-//     ":" + address.port);  
-//   }); 
-// } else {
-// 	var server = app.listen(8081, function () {
-// 		var host = server.address().address;
-// 		var port = server.address().port;
-// 		console.log("应用实例，访问地址为 http://%s:%s", host, port);
-// 	});
-// }
-
-  var server = app.listen(8081, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log("应用实例，访问地址为 http://%s:%s", host, port);
+var cluster = require('cluster');
+var numCPUs = require('os').cpus().length;
+if (cluster.isMaster) {
+  require('os').cpus().forEach(function(){
+    cluster.fork();
   });
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+  });
+  cluster.on('listening', function(worker, address) {  
+    console.log("A worker with #"+worker.id+" is now connected to " +
+     address.address +
+    ":" + address.port);  
+  }); 
+} else {
+	var server = app.listen(8081, function () {
+		var host = server.address().address;
+		var port = server.address().port;
+		console.log("应用实例，访问地址为 http://%s:%s", host, port);
+	});
+}
+
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
