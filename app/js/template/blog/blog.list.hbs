@@ -11,10 +11,11 @@
 	        <a class="read-more" blogId={{idblogs}}>Read more</a>
 	    </section>
 	    <footer class="post-footer">
-	        <img class="author-thumb" src="/images/head1.jpg" alt="Phil" nopin="nopin">
-	        <a href="/author/jruv/">{{username}}</a>
+	        <img class="author-thumb" src={{headimg}} alt="Phil" nopin="nopin">
+	        <a>{{username}}</a>
 	        —
-	        <time class="post-date" datetime={{date}}>{{lundate date}}</time>
+	        <time class="post-date" datetime={{date}}>123{{lundate date}}</time>
+	        <p>阅读次数{{numvisited}}</p>
 	    </footer>
 	</article>
 	{{/each}}

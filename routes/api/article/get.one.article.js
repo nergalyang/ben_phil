@@ -8,7 +8,15 @@ module.exports = function (req, res, next) {
 	var cb = function(err, rows, fields) {
 	        if (err) throw err;
 	        var data = rows[0];
-	        res.send({data: data});
+	        //logsuccess
+	        res.json(data);
 	};
 	pool({sql:sql,values: params,}, cb);
+	var updatesql = 'UPDATE BLOGS SET numvisited=numvisited+1 where idblogs =?';
+	var updatecb = function(err, rows, fields) {
+	        if (err) throw err;
+	        //logsuccess
+	        console.log('updated');
+	};
+	pool({sql:updatesql,values: params,}, updatecb);
 };

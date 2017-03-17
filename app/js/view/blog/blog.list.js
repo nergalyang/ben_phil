@@ -1,5 +1,5 @@
 var template = require('../../template/blog/blog.list.hbs');
-var BlogModel  = require('../../model/blog/blog.model.js');
+// var BlogModel  = require('../../model/blog/blog.model.js');
 // var MessageView  = require('../utils/message.js');
 // var MessageModel = require('../../model/utils/message.model.js');
 
@@ -17,8 +17,7 @@ var BlogListView = Marionette.View.extend({
     messageRegion : '#messageRegion'
   },
   initialize : function () {
-    this.model = new BlogModel();
-    this.model.fetch({async:false});
+
   },
   onRender : function (e) {
   	  //必须设置filebrowse 的路径，相应的browse server的按钮才会出现

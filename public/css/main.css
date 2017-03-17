@@ -101,12 +101,13 @@ canvas img {
 }
 
 /*footer{height:50px;position:absolute;bottom:0px;margin-left:auto;}*/
+#app {
+	min-height: 550px;
+}
 footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 80px;
+    margin-top: 100px;
 }
 
 /*博客文章*/
@@ -136,7 +137,7 @@ footer {
 .post-date {
     display: inline-block;
     text-transform: uppercase;
-    font-size: 1.3rem;
+    font-size: .9rem;
     white-space: nowrap;
     margin-top: .75rem;
 }
@@ -151,5 +152,24 @@ footer {
     height: 34px;
     float: left;
     margin-right: 9px;
+    margin-top: 0.5rem;
     border-radius: 100%;
+}
+.singleTitle {
+	margin-bottom: 2rem;
+	display: inline-block;
+	font-size: 1.5rem;
+}
+
+.singleDate {
+	display: inline-block;
+	float: right;
+	font-size: .8rem;
+}
+.singlePost {
+	border-top: thin solid #cbcbcb;
+	padding-top: 2rem;
+}
+.footDate {
+	margin-top: 2rem;
 }
