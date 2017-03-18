@@ -14,8 +14,12 @@
 	        <img class="author-thumb" src={{headimg}} alt="Phil" nopin="nopin">
 	        <a>{{username}}</a>
 	        —
-	        <time class="post-date" datetime={{date}}>123{{lundate date}}</time>
-	        <p>阅读次数{{numvisited}}</p>
+	        <div style="display: inline-block;">
+	        	<time class="post-date" datetime={{date}}>{{lundate date}}</time>
+	        </div>
+	        <div style="display: inline-block;float: right;">
+	        	<p class="viewcount">阅读次数{{numvisited}}</p>
+	        </div>
 	    </footer>
 	</article>
 	{{/each}}

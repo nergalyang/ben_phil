@@ -42,9 +42,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 //路由
-app.all('/', function(req, res, next) {
-	next();//你可以看到cluster的作用
-},homeRoute);
+app.all('/', homeRoute);
 
 //登录
 app.use('/login',loginRoute);
@@ -52,7 +50,6 @@ app.use('/logout', logoutRoute);
 
 //next就是下一个中间件
 app.get('/test', isLoggedIn, function(req,res,next) {
- 
   res.json(req.user);
 });
 

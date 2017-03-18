@@ -61,6 +61,20 @@ canvas img {
 	text-align: center;
 	
 }
+.nav-img {
+	float: right;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 50px;
+}
+.nav-name {
+	float: right;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 50px;
+}
 /*导航结束*/
 
 
@@ -121,10 +135,18 @@ footer {
     margin-right: auto;
     margin-bottom: 4rem;
     margin-left: auto;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     word-wrap: break-word;
     line-height: 1.75em
 
+}
+.post-title {
+	font-size: 1.5rem;
+}
+.post-section {
+	font-size: .8rem;
+	padding-top: .8rem;
+	margin-top: .8rem;
 }
 .post-meta {
 	display: block;
@@ -137,14 +159,14 @@ footer {
 .post-date {
     display: inline-block;
     text-transform: uppercase;
-    font-size: .9rem;
+    font-size: .8rem;
     white-space: nowrap;
     margin-top: .75rem;
 }
 .post-footer {
 	position: relative;
 	display:block;
-	margin-top: 4rem;
+	margin-top: .4rem;
 }
 
 .author-thumb {
@@ -172,4 +194,16 @@ footer {
 }
 .footDate {
 	margin-top: 2rem;
+}
+.viewcount {
+	opacity: .8;
+	font-size: 1rem;
+    font-size: .8rem;
+    white-space: nowrap;
+    margin-top: .75rem;
+}
+
+.writeTitle {
+	margin-bottom: 2rem;
+	margin-top: 5rem;
 }
