@@ -13,6 +13,13 @@ var MyController = {
       new WriteBlogView().render();
     });
   },
+  udBlog: function() {
+    this.clearT();
+    require.ensure([], function(require) {//实现按需加载 code split
+      var WriteBlogView= require('../view/blog/ud.blog.layout.js');
+      new WriteBlogView().render();
+    });
+  },
   blogs: function() {
     this.clearT();
     new BlogLayoutView().render();

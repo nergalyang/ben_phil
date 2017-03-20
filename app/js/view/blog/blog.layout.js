@@ -9,15 +9,27 @@ var BlogLayoutView = Marionette.View.extend({
   el: '#app',
   template: template,
   ui : {
-    
+    editMyList : '#editMyList',
+    allLists   : '#allLists'
   },
   events: {
-    
+    'click @ui.editMyList' : 'editMyList',
+    'click @ui.allLists'   : 'allLists'
   },
   regions : {
     blogRegion : '#blogRegion'
   },
   initialize : function () {
+    this.allLists();
+  },
+  editMyList: function () {
+    var that = this;
+    this.model = new BlogModel();
+    this.model.fetch({data: {ud: true},success : function (){
+      that.showChildView('blogRegion', new BlogListView({model: that.model}));
+    }});
+  },
+  allLists : function () {
     var that = this;
     this.model = new BlogModel();
     this.model.fetch({success : function (){
